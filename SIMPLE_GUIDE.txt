@@ -1,0 +1,262 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║          🎯 TFLite Models Ko Website Mein Lagane Ka Asan Tareeqa         ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  STEP 1: Folder Banayen                                                │
+│  ────────────────────────                                              │
+│                                                                         │
+│  Terminal mein type karein:                                            │
+│  ┌───────────────────────────────────────┐                             │
+│  │  mkdir -p public/models               │                             │
+│  └───────────────────────────────────────┘                             │
+│                                                                         │
+│  Ya manually:                                                           │
+│  public/ folder → models/ folder banaye                                │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  STEP 2: Models Paste Karein                                           │
+│  ──────────────────────────────                                        │
+│                                                                         │
+│  Apne 5 .tflite files ko public/models/ mein paste karein              │
+│                                                                         │
+│  public/models/                                                         │
+│  ├── mobilenet_v2.tflite              ✅                                │
+│  ├── inception_v3.tflite              ✅                                │
+│  ├── nasnet_mobile.tflite             ✅                                │
+│  ├── inception_resnet_v2.tflite       ✅                                │
+│  └── xception.tflite                  ✅                                │
+│                                                                         │
+│  File names flexible hain! Koi bhi variant chalega                     │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  STEP 3: Real Mode ON Karein                                           │
+│  ──────────────────────────────                                        │
+│                                                                         │
+│  File: src/app/utils/modelConfig.ts                                    │
+│  Line: 117                                                              │
+│                                                                         │
+│  PEHLE:                                                                 │
+│  ┌───────────────────────────────────────────────────────────────────┐ │
+│  │  export const MODEL_MODE = 'demo';                                │ │
+│  └───────────────────────────────────────────────────────────────────┘ │
+│                                                                         │
+│  BAAD MEIN:                                                             │
+│  ┌───────────────────────────────────────────────────────────────────┐ │
+│  │  export const MODEL_MODE = 'real';  ← 'demo' ko 'real' karein    │ │
+│  └───────────────────────────────────────────────────────────────────┘ │
+│                                                                         │
+│  Save karein (Ctrl+S)                                                   │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  BAS! HO GAYA! 🎉                                                       │
+│  ─────────────────                                                      │
+│                                                                         │
+│  Ab start karein:                                                       │
+│  ┌───────────────────────────────────────┐                             │
+│  │  npm run dev                          │                             │
+│  └───────────────────────────────────────┘                             │
+│                                                                         │
+│  Browser mein kholen: http://localhost:5173                            │
+│  New Analysis page par jayen                                            │
+│  Green card dikhna chahiye ✅                                           │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║                          TEST KAISE KAREIN?                              ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+1. New Analysis page kholen
+   │
+   ↓
+2. Upar status card dekhen
+   ├── 🟢 Green  = Sab ready! ✅
+   ├── 🟡 Yellow = Kuch missing ⚠️
+   └── 🔵 Blue   = Demo mode 
+   │
+   ↓
+3. Browser console check karein (F12)
+   │
+   ↓
+4. Yeh messages dikhne chahiye:
+   ├── ✅ Model MobileNetV2 successfully loaded!
+   ├── ✅ Model InceptionV3 successfully loaded!
+   ├── ✅ Model NasNetMobile successfully loaded!
+   ├── ✅ Model InceptionResNetV2 successfully loaded!
+   └── ✅ Model Xception successfully loaded!
+   │
+   ↓
+5. Test image upload karein
+   │
+   ↓
+6. Analyze karein
+   │
+   ↓
+7. Report dekhen
+   │
+   ↓
+   ✅ SUCCESS!
+
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║                       ZYADA HELP CHAHIYE?                                ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+Urdu/Hindi Guide:
+┌───────────────────────────────────────┐
+│  MODELS_KAISE_LAGAYEN.md             │  ← सबसे आसान complete guide
+└───────────────────────────────────────┘
+
+English Guide:
+┌───────────────────────────────────────┐
+│  INTEGRATION_STEPS.md                │  ← Detailed English guide
+└───────────────────────────────────────┘
+
+Quick Start:
+┌───────────────────────────────────────┐
+│  START_HERE.md                       │  ← 2-minute quick start
+└───────────────────────────────────────┘
+
+Verification:
+┌───────────────────────────────────────┐
+│  CHECKLIST.md                        │  ← Step-by-step checklist
+└───────────────────────────────────────┘
+
+Problems?
+┌───────────────────────────────────────┐
+│  TROUBLESHOOTING.md                  │  ← Solutions
+└───────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║                      CONFIGURATION (OPTIONAL)                            ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+File: src/app/utils/modelConfig.ts
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  CLASS ORDER (Line 44):                                                 │
+│  ─────────────────────────                                             │
+│  export const CLASS_LABELS = [                                          │
+│    'Normal',                                                            │
+│    'Kidney Stone',                                                      │
+│    'Tumor',                                                             │
+│    'Cyst'                                                               │
+│  ];                                                                     │
+│                                                                         │
+│  ⚠️ Training ki exact order use karein!                                 │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  NORMALIZATION (Lines 61-62):                                           │
+│  ────────────────────────────────                                      │
+│  export const NORMALIZATION_MEAN = [127.5, 127.5, 127.5];              │
+│  export const NORMALIZATION_STD = [127.5, 127.5, 127.5];               │
+│                                                                         │
+│  Common options:                                                        │
+│  • [0, 0, 0] and [255, 255, 255]     → Scale to [0, 1]                 │
+│  • [127.5, ...] and [127.5, ...]     → Scale to [-1, 1] (Default)     │
+│  • [123.68, ...] and [58.393, ...]   → ImageNet normalization         │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  IMAGE SIZE (Around Line 80):                                           │
+│  ────────────────────────────────                                      │
+│  inputShape: {                                                          │
+│    width: 224,      ← Training ki size                                  │
+│    height: 224,                                                         │
+│    channels: 3,     ← Yeh mat change karein                            │
+│  }                                                                      │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║                      FILE STRUCTURE                                      ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+your-project/
+│
+├── public/
+│   └── models/                      ← MODELS YAHAN PASTE KAREIN
+│       ├── mobilenet_v2.tflite
+│       ├── inception_v3.tflite
+│       ├── nasnet_mobile.tflite
+│       ├── inception_resnet_v2.tflite
+│       └── xception.tflite
+│
+└── src/
+    └── app/
+        └── utils/
+            └── modelConfig.ts       ← YEH FILE EDIT KAREIN
+
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║                     QUICK COMMANDS                                       ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+Check if models exist:
+┌───────────────────────────────────────┐
+│  ls -la public/models/               │
+└───────────────────────────────────────┘
+
+Start development server:
+┌───────────────────────────────────────┐
+│  npm run dev                         │
+└───────────────────────────────────────┘
+
+Test in browser console:
+┌───────────────────────────────────────┐
+│  Press F12                           │
+│  Go to Console tab                   │
+│  Look for ✅ messages                │
+└───────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║                     ALL DONE! 🎉                                         ║
+║                                                                          ║
+║  Aapka AI kidney disease detection system ready hai!                    ║
+║                                                                          ║
+║  Ab aap:                                                                 ║
+║  ✅ Real AI predictions use kar sakte hain                               ║
+║  ✅ Professional reports generate kar sakte hain                         ║
+║  ✅ Patient data manage kar sakte hain                                   ║
+║                                                                          ║
+║  Good Luck! 🚀                                                           ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
