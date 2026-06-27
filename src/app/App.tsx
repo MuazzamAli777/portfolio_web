@@ -548,17 +548,27 @@ function Hero() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="relative"
             >
-              <div className="w-28 h-28 rounded-full p-[3px] bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500">
-                <div className="w-full h-full rounded-full bg-[#0d1130] flex items-center justify-center">
-                  <span className="text-white font-extrabold text-4xl" style={{ fontFamily: "'Manrope', sans-serif" }}>MA</span>
-                </div>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-green-500 rounded-full border-2 border-[#060611] flex items-center justify-center">
-                <CheckCircle className="w-4 h-4 text-white" />
-              </div>
+              
+              
             </motion.div>
 
-            <CodeWindow />
+            <motion.div
+  animate={{ y: [0, -10, 0] }}
+  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+  className="relative"
+>
+  <div className="w-64 h-64 mt-5 rounded-full p-[3px] bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500">
+    <img
+      src="/profile photo.png"
+      alt="Profile"
+      className="w-full h-full rounded-full object-cover"
+    />
+  </div>
+
+  <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-green-500 rounded-full border-2 border-[#060611] flex items-center justify-center">
+    <CheckCircle className="w-4 h-4 text-white" />
+  </div>
+</motion.div>
 
             <div className="flex flex-wrap gap-2 justify-center lg:justify-end">
               {["React", "Node.js", "MongoDB", "Python", "AI/ML", "Express"].map((t, i) => (
