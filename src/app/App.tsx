@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import emailjs from "@emailjs/browser";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 import {
   Github,
   Linkedin,
@@ -1311,6 +1311,7 @@ export default function App() {
 
         <BackToTop />
       </div>
+      <Analytics />
     </>
   );
 }
