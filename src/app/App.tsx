@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import emailjs from "@emailjs/browser";
+import { Analytics } from "@vercel/analytics/next"
 import {
   Github,
   Linkedin,
