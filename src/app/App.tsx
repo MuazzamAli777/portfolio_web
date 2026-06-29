@@ -993,7 +993,7 @@ function GitHubStats() {
               className="glass rounded-2xl p-4 flex flex-col items-center gap-3"
             >
               <p className="section-label text-slate-600">{c.label}</p>
-              <img src={`${c.src}&cache_seconds=1800`} alt={c.label} className="w-full rounded-xl" loading="lazy" />
+              <img src={c.src} alt={c.label} className="w-full rounded-xl" loading="lazy" />
             </motion.div>
           ))}
         </div>
