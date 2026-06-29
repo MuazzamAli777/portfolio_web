@@ -28,6 +28,15 @@ import {
   Send,
 } from "lucide-react";
 
+import {
+
+  Users,
+  BookOpen,
+  GitBranch,
+  Star,
+} from "lucide-react";
+
+
 // ── GLOBAL STYLES ─────────────────────────────────────────────────────────────
 function GlobalStyles() {
   
@@ -955,52 +964,171 @@ function Experience() {
     </section>
   );
 }
-
-// ── GITHUB STATS ──────────────────────────────────────────────────────────────
 function GitHubStats() {
-  const u = "MuazzamAli777";
-  const statCards = [
-    {
-      label: "GitHub Stats",
-      src: `https://github-readme-stats.vercel.app/api?username=${u}&theme=tokyonight&hide_border=true&show_icons=true&bg_color=0d0d1a&title_color=818cf8&text_color=94a3b8&icon_color=6366f1`,
-    },
-    {
-      label: "Top Languages",
-      src: `https://github-readme-stats.vercel.app/api/top-langs/?username=${u}&theme=tokyonight&hide_border=true&layout=compact&bg_color=0d0d1a&title_color=818cf8&text_color=94a3b8`,
-    },
-    {
-      label: "GitHub Streak",
-      src: `https://streak-stats.demolab.com?user=${u}&theme=tokyonight&hide_border=true&stroke=818cf8&ring=6366f1&fire=c084fc&currStreakNum=f1f5f9&dates=64748b`,
-    },
-  ];
+  const username = "MuazzamAli777";
+
+  const [user, setUser] = useState(null);
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchGitHub = async () => {
+    try {
+      const [userRes, repoRes] = await Promise.all([
+        fetch(`https://api.github.com/users/${username}`),
+        fetch(
+          `https://api.github.com/users/${username}/repos?per_page=100`
+        ),
+      ]);
+
+      const userData = await userRes.json();
+      const repoData = await repoRes.json();
+
+      setUser(userData);
+      setRepos(repoData);
+    } catch (err) {
+      console.log(err);
+    }
+
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchGitHub();
+
+    const interval = setInterval(fetchGitHub, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading)
+    return (
+      <div className="text-center text-slate-400 py-20">
+        Loading GitHub Stats...
+      </div>
+    );
+
+  const totalStars = repos.reduce(
+    (sum, repo) => sum + repo.stargazers_count,
+    0
+  );
+
+  const totalForks = repos.reduce(
+    (sum, repo) => sum + repo.forks_count,
+    0
+  );
 
   return (
-    <section id="github" className="py-24 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="github" className="py-24">
+
+      <div className="max-w-6xl mx-auto px-6">
+
         <SectionHeader
           label="Open Source"
-          title="GitHub Stats"
-          description="Coding activity, language breakdown, and open-source contribution streak."
+          title="GitHub Overview"
+          description="Real-time GitHub statistics powered directly by GitHub API."
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {statCards.map((c, i) => (
-            <motion.div
-              key={c.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass rounded-2xl p-4 flex flex-col items-center gap-3"
-            >
-              <p className="section-label text-slate-600">{c.label}</p>
-              <img src={c.src} alt={c.label} className="w-full rounded-xl" loading="lazy" />
-            </motion.div>
-          ))}
+
+        <div className="grid md:grid-cols-3 gap-6">
+
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="glass rounded-2xl p-6"
+          >
+            <Github className="w-10 h-10 text-indigo-400 mb-4"/>
+
+            <h3 className="text-2xl font-bold">
+              {user.public_repos}
+            </h3>
+
+            <p className="text-slate-400">
+              Public Repositories
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="glass rounded-2xl p-6"
+          >
+            <Users className="w-10 h-10 text-pink-400 mb-4"/>
+
+            <h3 className="text-2xl font-bold">
+              {user.followers}
+            </h3>
+
+            <p className="text-slate-400">
+              Followers
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="glass rounded-2xl p-6"
+          >
+            <BookOpen className="w-10 h-10 text-cyan-400 mb-4"/>
+
+            <h3 className="text-2xl font-bold">
+              {user.following}
+            </h3>
+
+            <p className="text-slate-400">
+              Following
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="glass rounded-2xl p-6"
+          >
+            <Star className="w-10 h-10 text-yellow-400 mb-4"/>
+
+            <h3 className="text-2xl font-bold">
+              {totalStars}
+            </h3>
+
+            <p className="text-slate-400">
+              Total Stars
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="glass rounded-2xl p-6"
+          >
+            <GitBranch className="w-10 h-10 text-green-400 mb-4"/>
+
+            <h3 className="text-2xl font-bold">
+              {totalForks}
+            </h3>
+
+            <p className="text-slate-400">
+              Total Forks
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="glass rounded-2xl p-6"
+          >
+            <Github className="w-10 h-10 text-purple-400 mb-4"/>
+
+            <h3 className="text-2xl font-bold">
+              {user.created_at.substring(0,4)}
+            </h3>
+
+            <p className="text-slate-400">
+              GitHub Since
+            </p>
+          </motion.div>
+
         </div>
+
       </div>
+
     </section>
   );
 }
+
+
 
 // ── SERVICES ──────────────────────────────────────────────────────────────────
 const SERVICES = [
